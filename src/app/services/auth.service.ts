@@ -17,7 +17,13 @@ export class AuthService {
     })
   }
 
- 
+ signUpWithCredentials(email:string, password:string){
+   return this.afAuth.createUserWithEmailAndPassword(email,password).then(response=>{
+     if(response){
+       localStorage.setItem('user', JSON.stringify(response.user));
+     }
+   })
+ }
 
   getCurrentUser(): Observable<User>{
     return this.afAuth.authState;
