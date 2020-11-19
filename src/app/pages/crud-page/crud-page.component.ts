@@ -32,6 +32,8 @@ export class CRUDPageComponent implements OnInit {
       nombre:['', Validators.required],
       precio:['', Validators.required],
       peso:['', Validators.required],
+      categoria:['', Validators.required],
+      cantidad:['', Validators.required],
     })
 
     this.crudService.getProducts().subscribe(response=>{
@@ -40,6 +42,8 @@ export class CRUDPageComponent implements OnInit {
           nombre:product.payload.doc.data().nombre,
           precio:product.payload.doc.data().precio,
           peso:product.payload.doc.data().peso,
+          categoria:product.payload.doc.data().categoria,
+          cantidad:product.payload.doc.data().cantidad,
           id: product.payload.doc.id,
         }
       })
@@ -83,6 +87,8 @@ export class CRUDPageComponent implements OnInit {
       nombre: product.nombre,
       precio: product.precio,
       peso: product.peso,
+      categoria: product.categoria,
+      cantidad: product.cantidad,
     });
 
     this.productId = product.id
