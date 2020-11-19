@@ -13,6 +13,10 @@ import { environment } from 'src/environments/environment';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
+import { CRUDPageComponent } from './pages/crud-page/crud-page.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,8 @@ import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component
     HomePageComponent,
     LoginPageComponent,
     CartPageComponent,
-    SignUpPageComponent
+    SignUpPageComponent,
+    CRUDPageComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,10 @@ import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
-
+    NgxPaginationModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { rejects } from 'assert';
 import { auth, User } from 'firebase';
 import { Observable } from 'rxjs';
 
@@ -16,13 +17,7 @@ export class AuthService {
     })
   }
 
- signUpWithCredentials(email:string, password:string){
-   return this.afAuth.createUserWithEmailAndPassword(email,password).then(response =>{
-     if (response){
-       localStorage.setItem('user', JSON.stringify(response.user));
-     }
-   })
- }
+ 
 
   getCurrentUser(): Observable<User>{
     return this.afAuth.authState;

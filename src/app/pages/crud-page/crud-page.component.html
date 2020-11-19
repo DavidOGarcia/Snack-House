@@ -1,0 +1,79 @@
+<div style="text-align: center;">
+
+    <div>
+        <h2>Lista de productos</h2>
+    </div>
+    <div style="padding: 2%;">
+        <button type="button" class="btn btn-success btn-lg" (click)="open(content)">Agregar Producto</button>
+    </div>
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Peso</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of collection.data | paginate: config;let i = index" [class.active]="i == currentIndex">
+                <td>{{product.nombre}}</td>
+                <td>{{product.precio}}</td>
+                <td>{{product.peso}}</td>
+                <td>
+                   
+                    <button type="button" class="btn btn-primary" (click)="openEdit(content, product)" >Editar</button>
+                    <button type="button" class="btn btn-danger" (click)="eliminar(product)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+
+    <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Agregar Producto</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+
+                <form [formGroup]="productForm">
+
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" formControlName="nombre" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Precio</label>
+                        <input type="number" formControlName="precio" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Peso</label>
+                        <input type="number" formControlName="peso" class="form-control">
+                    </div>
+
+                </form>
+
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="guardarDatos()" *ngIf="!editar">Agregar</button>
+          <button type="button" class="btn btn-outline-dark" (click)="updateProduct()" *ngIf="editar"> Actualizar</button>
+        </div>
+      </ng-template>
+
+</div>
+
+
+  
+
+
+
