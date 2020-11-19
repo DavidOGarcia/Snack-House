@@ -105,11 +105,14 @@ export class CRUDPageComponent implements OnInit {
   }
 
   private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
+    if (reason === ModalDismissReasons.ESC) {  
+      this.productForm.reset() 
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      this.productForm.reset() 
       return 'by clicking on a backdrop';
     } else {
+      this.productForm.reset() 
       return `with: ${reason}`;
     }
   }
