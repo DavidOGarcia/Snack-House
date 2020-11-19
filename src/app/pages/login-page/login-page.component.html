@@ -1,0 +1,9 @@
+<button class="btn btn-primary" (click)= "loginWithGoogle()" *ngIf="!isAuthenticated">Login</button>
+<div class="btn-group" *ngIf="isAuthenticated">
+    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{user.displayName || user.email}}
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="" (click)= "logout()">Logout</a>
+    </div>
+  </div>
