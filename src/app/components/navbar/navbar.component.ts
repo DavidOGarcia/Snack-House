@@ -38,6 +38,11 @@ export class NavbarComponent implements OnInit {
     })
   }
 
+  loginWithGoogle(): void {
+    this.authService.loginWithGoogle().then((response) =>{
+      this.router.navigate(['/']);
+    });
+  }
  
 
 }

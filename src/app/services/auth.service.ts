@@ -17,7 +17,15 @@ export class AuthService {
     })
   }
 
- signUpWithCredentials(email:string, password:string){
+  loginWithEmail(email: string, password: string): Promise<void>{
+    return this.afAuth.signInWithEmailAndPassword(email, password).then(response =>{
+      if (response){
+        localStorage.setItem('user', JSON.stringify(response.user));
+      }
+    })
+  }
+
+ signUpWithCredentials(email:string, password:string): Promise<void>{
    return this.afAuth.createUserWithEmailAndPassword(email,password).then(response=>{
      if(response){
        localStorage.setItem('user', JSON.stringify(response.user));

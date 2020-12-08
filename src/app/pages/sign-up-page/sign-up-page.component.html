@@ -1,7 +1,12 @@
-<div class = "container" >
+<body class="fondo" >
+  
+<div class="contenedor">
+
+  <div class = "container"  >
     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
+          <h2 class="text-center" >Registro</h2>
+          <label for="exampleInputEmail1" >Correo electrónico</label>
           <input type="email" class="form-control" 
           id="exampleInputEmail1" 
           aria-describedby="emailHelp"
@@ -21,3 +26,5 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
 </div>
+</div>
+</body>

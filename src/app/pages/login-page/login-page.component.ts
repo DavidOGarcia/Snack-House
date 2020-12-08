@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { User } from 'firebase';
 import { AuthService } from 'src/app/services/auth.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
@@ -14,11 +15,17 @@ export class LoginPageComponent implements OnInit {
   isAuthenticated = false;
   user: User = null;
   closeResult = '';
+  loginForm: FormGroup = null;
 
-  constructor(private authService: AuthService, private router: Router, private modalService: NgbModal) { }
+  constructor(private authService: AuthService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.getCurrentUser();
+    this.loginForm = this.fb.group({
+      email: '',
+      password: '',
+    });
+    
   }
 
   loginWithGoogle(): void {
@@ -46,22 +53,15 @@ export class LoginPageComponent implements OnInit {
     })
   }
   
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  onSubmit(): void {
+    console.log({
+      email: this.loginForm.get('email').value,
+      password: this.loginForm.get('password').value,
     });
-  }
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
+    this.authService.loginWithEmail(this.loginForm.get('email').value, 
+    this.loginForm.get('password').value).then(()=>{
+      this.router.navigate(['/']);
+    });
   }
 
 }

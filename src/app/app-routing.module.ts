@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:'login', component: LoginPageComponent},
   {path: 'cart', canActivate:[AuthGuard], component: CartPageComponent},
   {path: 'register', component: SignUpPageComponent},
-  {path: 'crud', component:CRUDPageComponent},
+  {path: 'crud', canActivate:[AuthGuard],component:CRUDPageComponent},
 ];
 
 @NgModule({
