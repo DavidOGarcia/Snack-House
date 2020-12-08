@@ -26,8 +26,7 @@
         
         <div  *ngIf="!isAuthenticated">
           <li class="nav-item" style="margin-left: 5rem;">
-            <a class="btn btn-primary" href="register" role="button" style="margin-right: 0.25rem;" nh>Registrarse</a>
-            <a class="btn btn-primary" href="login" role="button" >Login</a>
+            <a class="btn btn-primary" [routerLink]="['/login']" role="button" >Iniciar sesión</a>
           </li>
         </div>
         

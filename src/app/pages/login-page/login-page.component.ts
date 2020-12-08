@@ -39,6 +39,7 @@ export class LoginPageComponent implements OnInit {
       if(response){
         this.isAuthenticated = true;
         this.user = response;
+        console.log('User ->', response);
         return;
       }
 
