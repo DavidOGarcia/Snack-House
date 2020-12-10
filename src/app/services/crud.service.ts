@@ -8,7 +8,7 @@ export class CRUDService {
 
   constructor(private firestore: AngularFirestore) { }
 
-
+ 
   getProducts(){
     return this.firestore.collection('products').snapshotChanges();
   }

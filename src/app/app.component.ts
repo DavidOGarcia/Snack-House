@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'snack-house';
+  handleSearch(value: string){
+    console.log(value)
+    this.filterProduct = value
+  }
+
+  filterProduct = '';
 }

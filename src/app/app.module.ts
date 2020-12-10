@@ -17,6 +17,10 @@ import { CRUDPageComponent } from './pages/crud-page/crud-page.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChuchesPageComponent } from './pages/chuches-page/chuches-page.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginPageComponent,
     CartPageComponent,
     SignUpPageComponent,
-    CRUDPageComponent
+    CRUDPageComponent,
+    ChuchesPageComponent,
+    FilterPipe,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +46,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgxPaginationModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

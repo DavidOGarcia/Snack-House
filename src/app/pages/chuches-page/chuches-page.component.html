@@ -1,0 +1,62 @@
+
+<body style="background-color: #74FBFF;" >
+
+  <app-search (search)="handleSearch($event)"></app-search>
+  <div class="contenedor">
+  
+    <div class="row row-cols-1 row-cols-md-3 ml-5 mt-4">
+      <div class="col mb-3" *ngFor="let product of collection.data | filter:filterProduct">
+          <div class="card w-75 h-100">
+            <img src="{{product.imagen}}" class="card-img-top" alt="imagen de {{product.nombre}}">
+            <div class="card-body">
+              <h1 class="card-title text-center">{{product.nombre}}</h1>
+              <p class="card-text">{{product.descripcion}}</p>
+  
+              <div class="text-center mt-4" >
+
+                <button class="agregar-boton" (click)="open(mymodal, product)">Escoger cantidad</button>
+   
+                <ng-template #mymodal let-modal>
+                  <div class="modal-header">
+                    <h1 class="modal-title" id="modal-basic-title"></h1>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+
+                    <div class="text-center">
+                      <h1 class="encabezado">{{product.nombre}}</h1>
+                      <img src="{{product.imagen}}" alt="" width="50%">
+                    </div>
+                
+                    <div class="text-center mt-4 mb-4">
+                      <h3>Peso: {{product.peso}}g</h3>
+                      <h3>Categoría: {{product.categoria}}</h3>
+                      <h3>Precio: {{monto}} $</h3>
+                    </div>
+                
+                    <div class="agregar-cantidad mt-4">
+                      <button type="button" class="btn btn-outline-danger" (click) = "restarCantidad(product)">-</button>
+                      <p>{{cantidad}}</p>
+                      <button type="button" class="btn btn-outline-success" (click)="agregarCantidad(product)">+</button>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Agregar a la Bolsa</button>
+                  </div>
+                </ng-template>
+                
+              </div>
+                
+              </div>
+              
+            </div>
+          </div>
+      </div>
+    </div>
+</body>
+
+
+
+

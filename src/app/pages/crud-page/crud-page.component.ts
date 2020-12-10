@@ -17,6 +17,8 @@ export class CRUDPageComponent implements OnInit {
   productForm: FormGroup;
   productId: string;
   editar: boolean;
+  urllink: string = "Escritorio/FotosProyecto/cocosette.jpg";
+  
 
   constructor(private fb: FormBuilder, private crudService: CRUDService, private modalService: NgbModal) { }
 
@@ -34,6 +36,8 @@ export class CRUDPageComponent implements OnInit {
       peso:['', Validators.required],
       categoria:['', Validators.required],
       cantidad:['', Validators.required],
+      imagen:['', Validators.required],
+      descripcion:['', Validators.required],
     })
 
     this.crudService.getProducts().subscribe(response=>{
@@ -44,6 +48,8 @@ export class CRUDPageComponent implements OnInit {
           peso:product.payload.doc.data().peso,
           categoria:product.payload.doc.data().categoria,
           cantidad:product.payload.doc.data().cantidad,
+          imagen:product.payload.doc.data().imagen,
+          descripcion:product.payload.doc.data().descripcion,
           id: product.payload.doc.id,
         }
       })
@@ -76,9 +82,18 @@ export class CRUDPageComponent implements OnInit {
         this.modalService.dismissAll() 
       }).catch(error=>{
         console.error(error)
-      })
-    
-    
+      })  
+  }
+
+  selectFiles(event){
+    if(event.target.files){
+      var reader = new FileReader()
+      reader.readAsDataURL(event.target.files[0])
+      reader.onload = (event:any) =>{
+        this.urllink = event.target.result
+        
+      }
+    }
   }
 
 
@@ -89,6 +104,8 @@ export class CRUDPageComponent implements OnInit {
       peso: product.peso,
       categoria: product.categoria,
       cantidad: product.cantidad,
+      imagen: product.imagen,
+      descripcion: product.descripcion,
     });
 
     this.productId = product.id

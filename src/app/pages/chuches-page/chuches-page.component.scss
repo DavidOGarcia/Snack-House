@@ -1,0 +1,32 @@
+.barra{
+    width: 287px;
+height: 896px;
+left: 0px;
+top: 128px;
+
+background: #FFFBFC;
+}
+
+.contenedor{
+    background: #74FBFF;
+    
+}
+
+.agregar-cantidad{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.agregar-boton{
+    background: #F87DAE;
+    border-radius: 50px;
+    color: cornsilk;
+    width: 227px;
+    line-height: 53px;
+}
+
+.encabezado{
+    font-weight: 500;
+}
+

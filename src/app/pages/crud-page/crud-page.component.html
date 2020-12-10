@@ -10,16 +10,19 @@
 
         <thead>
             <tr>
+                <th>Imagen</th>
                 <th>Categoría</th>
                 <th>Nombre</th>
                 <th>Cantidad</th>
-                <th>Precio</th>
-                <th>Peso</th>
+                <th>Precio ($)</th>
+                <th>Peso (g)</th>
                 <th>Opciones</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let product of collection.data | paginate: config;let i = index" [class.active]="i == currentIndex">
+                
+                <td><img  src="{{product.imagen}}" width="50px" ></td>
                 <td>{{product.categoria}}</td>
                 <td>{{product.nombre}}</td>
                 <td>{{product.cantidad}}</td>
@@ -71,6 +74,16 @@
                     <div class="form-group">
                         <label>Peso</label>
                         <input type="number" formControlName="peso" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Imagen</label>
+                        <input type="text" formControlName="imagen" class="form-control" (change)= "selectFiles($event)">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        <input type="text" formControlName="descripcion" class="form-control">
                     </div>
 
                 </form>

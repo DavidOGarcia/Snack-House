@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'firebase';
 import { AuthService } from 'src/app/services/auth.service';
+import { debounceTime } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-navbar',
@@ -12,11 +15,17 @@ export class NavbarComponent implements OnInit {
 
   isAuthenticated = false;
   user: User = null;
+  search = new FormControl('');
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.getCurrentUser();
+    this.search.valueChanges.pipe(
+      
+      debounceTime(300)
+
+    ).subscribe(value => this.searchEmitter.emit(value))
   }
 
   getCurrentUser(): void{
@@ -44,5 +53,6 @@ export class NavbarComponent implements OnInit {
     });
   }
  
+  @Output('search') searchEmitter = new EventEmitter<string>();
 
 }
