@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { EmailGuard } from './guards/email.guard';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { ChuchesPageComponent } from './pages/chuches-page/chuches-page.component';
 import { CRUDPageComponent } from './pages/crud-page/crud-page.component';

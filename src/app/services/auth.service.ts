@@ -43,6 +43,7 @@ export class AuthService {
     return user !== null;
   }
 
+
   logout(): Promise<void>{
     return this.afAuth.signOut().then(()=>{
 

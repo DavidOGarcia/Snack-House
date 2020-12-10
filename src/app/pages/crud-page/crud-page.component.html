@@ -1,10 +1,10 @@
-<div style="text-align: center;">
+<div class="fondo">
 
     <div>
-        <h2>Lista de productos</h2>
+        <h2 style="padding:2%;">Lista de productos</h2>
     </div>
     <div style="padding: 2%;">
-        <button type="button" class="btn btn-success btn-lg" (click)="open(content)">Agregar Producto</button>
+        <button type="button" class="titulo" (click)="open(content)">Agregar Producto</button>
     </div>
     <table class="table">
 
@@ -29,9 +29,12 @@
                 <td>{{product.precio}}</td>
                 <td>{{product.peso}}</td>
                 <td>
-                   
-                    <button type="button" class="btn btn-primary" (click)="openEdit(content, product)" >Editar</button>
-                    <button type="button" class="btn btn-danger" (click)="eliminar(product)">Eliminar</button>
+                 
+                <div class="botones">
+                    <button type="button" class="btn " (click)="openEdit(content, product)" style="background-color: #D0C952;">Editar</button>
+                <button type="button" class="btn btn-danger" (click)="eliminar(product)">Eliminar</button>
+                </div>
+                
                 </td>
             </tr>
         </tbody>

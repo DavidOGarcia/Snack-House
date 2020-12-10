@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChuchesPageComponent } from './pages/chuches-page/chuches-page.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SearchComponent } from './components/search/search.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SearchComponent } from './components/search/search.component';
     CRUDPageComponent,
     ChuchesPageComponent,
     FilterPipe,
-    SearchComponent
+    SearchComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

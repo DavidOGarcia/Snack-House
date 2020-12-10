@@ -1,10 +1,10 @@
 
-<body style="background-color: #74FBFF;" >
+<body >
 
   <app-search (search)="handleSearch($event)"></app-search>
   <div class="contenedor">
   
-    <div class="row row-cols-1 row-cols-md-3 ml-5 mt-4">
+    <div class="row row-cols-1 row-cols-md-3 ml-5 pt-4">
       <div class="col mb-3" *ngFor="let product of collection.data | filter:filterProduct">
           <div class="card w-75 h-100">
             <img src="{{product.imagen}}" class="card-img-top" alt="imagen de {{product.nombre}}">

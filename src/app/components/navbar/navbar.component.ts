@@ -14,6 +14,7 @@ import { debounceTime } from 'rxjs/operators';
 export class NavbarComponent implements OnInit {
 
   isAuthenticated = false;
+  isAdmin = false
   user: User = null;
   search = new FormControl('');
 
@@ -33,9 +34,12 @@ export class NavbarComponent implements OnInit {
       if(response){
         this.isAuthenticated = true;
         this.user = response;
+        if(this.user.email.includes('admin.com')){
+          this.isAdmin = true
+        }
         return;
       }
-
+      this.isAdmin = false
       this.isAuthenticated = false;
       this.user = null;
     });
